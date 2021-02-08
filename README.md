@@ -10,7 +10,7 @@ The app is for the [code challenge](task.pdf)
 
 ### Run locally
 
-1. Make sure required Ruby version is installed.
+1. Make sure the required Ruby version is installed.
 2. Make sure Redis server is installed and running.
 3. Run `bundle install` to install gems.
 4. Run `rspec`
@@ -22,7 +22,7 @@ The app's API has three endpoints:
 1. `GET /` - returns the game status
 2. `POST /start` - starts a new game
 3. `POST /deliveries` - adds a delivery to the current frame.
-   The endpoing eceives pins number in `pins` parameter.
+   The endpoint receives pins number in `pins` parameter.
 
 ### Game data storage 
 
