@@ -17,7 +17,7 @@ The app is for the [code challenge](task.pdf)
 
 ### Functionality
 
-App has three endpoints:
+The app's API has three endpoints:
 
 1. `GET /` - returns the game status
 2. `POST /start` - starts a new game
@@ -26,7 +26,7 @@ App has three endpoints:
 
 ### Game data storage 
 
-App stores game data in json object. Default storage is Redis, but it is
+The app stores game data in json object. Default storage is Redis, but it is
 possible to configure any kind of storage and pass it to game as dependency.
 Example:
 ```
@@ -73,3 +73,15 @@ into game representation. If a frame score is not possible to calculate (for exa
 Having data for each frame and scores allows to display a game details on a frontend.
 
 ### Features
+
+1. Modular structure. 
+2. Isolated logic layer with various service objects within game context:
+- `Commands::BuildGameSchema` - build default game schema on start
+- `Commands::CalculateScore` - calculates game scores according to frames
+- `Commands::CreateDelivery` - add delivery to the curren game, distributes deliveries
+- `Repositories::GameRepository` - communicates with storage object
+- `Presenters::GamePresenter` - decorates game status before sending in response.
+3. Exchangeable storage to store game data is passed to repository as dependency.
+4. Custom exception objects with configurable messages.
+5. Self-explanatory code and test coverage with integration and unit tests.
+
