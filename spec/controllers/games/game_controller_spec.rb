@@ -104,6 +104,18 @@ describe Games::GameController do
         expect(response_data[:message]).to eq Games::Exceptions::GameInactiveException.new.message
       end
 
+      it 'adds 1 bonus delivery if last frame is strike' do
+        10.times do
+          post :deliveries, params: { pins: 10 }
+        end
+        post :deliveries, params: { pins: 10 }
+        expect(json[:status]).to eq('success')
+        expect(response_data[:frames]).to eq([[10,0]] * 10)
+        expect(response_data[:active]).to eq(true)
+        expect(response_data[:bonus]).to eq([10])
+        expect(response_data[:score]).to eq([30,60,90,120,150,180,210,240,270,nil])
+      end
+
       it 'adds 2 bonus deliveries if last frame is strike' do
         10.times do
           post :deliveries, params: { pins: 10 }
