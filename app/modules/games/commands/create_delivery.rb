@@ -102,6 +102,7 @@ module Games
         else
           frames[current_frame] << pins
         end
+        @frame = frames[current_frame]
         finish_game! if last_frame? && frame_finished? && !strike? && !spare?
         next_frame! if frame_finished? && !last_frame?
       end
