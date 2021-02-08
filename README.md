@@ -45,7 +45,7 @@ Example:
 - `bonus` - stores bonus deliveries in case of last frame is a spare or a strike
 - `current_frame` - current frame index 
 
-#### Logic
+### Main logic
 
 1. When a game is started a new game data object is created and persisted in storage.
 2. While new deliveries are being added the app distributes deliveries between frames.
