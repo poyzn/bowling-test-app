@@ -105,10 +105,9 @@ describe Games::GameController do
       end
 
       it 'adds 1 bonus delivery if last frame is strike' do
-        10.times do
+        11.times do
           post :deliveries, params: { pins: 10 }
         end
-        post :deliveries, params: { pins: 10 }
         expect(json[:status]).to eq('success')
         expect(response_data[:frames]).to eq([[10,0]] * 10)
         expect(response_data[:active]).to eq(true)
@@ -117,11 +116,9 @@ describe Games::GameController do
       end
 
       it 'adds 2 bonus deliveries if last frame is strike' do
-        10.times do
+        12.times do
           post :deliveries, params: { pins: 10 }
         end
-        post :deliveries, params: { pins: 10 }
-        post :deliveries, params: { pins: 10 }
         expect(json[:status]).to eq('success')
         expect(response_data[:frames]).to eq([[10,0]] * 10)
         expect(response_data[:active]).to eq(false)
